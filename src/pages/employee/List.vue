@@ -125,20 +125,30 @@ export default {
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-          this.$message({
-            type: 'success',
-            message: '删除成功!'+id
+          let url = "http://localhost:6677//waiter/deleteById?id="+id;
+            request.get(url).then((response)=>{
+                    //刷新数据
+                    this.loadData();
+                    //提示结果
+                    this.$message({
+                    type: 'success',
+                    message: response.message
+                });
           });
         })
       },
         toAddHandler(){
+          this.form={
+            type:"employee"
+          },
         this.visible=true;
         this.title="录入员工信息";
            },
         closeModalHandler(){
        this.visible=false;
         },
-        toUpdateHandler(){
+        toUpdateHandler(row){
+           this.form=row;
            this.visible=true; 
            this.title="修改员工信息";
         }
