@@ -144,10 +144,5 @@ export default {
 </script>
 
 <style scoped>
- .bin{
-     background-color:aqua;
-     color: blue;
-     display: inline-block;
-
- }
+ 
 </style>
